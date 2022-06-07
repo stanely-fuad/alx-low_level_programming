@@ -1,4 +1,7 @@
 #include "main.h"
+#include <stdlib.h>
+#inclide <time.h>
+#inclide <studio.h>
 
 /**
  * print_alphabet - prints alphabet
