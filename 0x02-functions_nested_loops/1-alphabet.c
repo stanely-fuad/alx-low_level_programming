@@ -1,7 +1,7 @@
 #include "main.h"
 #include <stdlib.h>
 #include <time.h>
-#include <studio.h>
+#include <stdio.h>
 
 /**
  * print_alphabet - prints alphabet
