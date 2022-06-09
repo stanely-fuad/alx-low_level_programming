@@ -6,3 +6,4 @@ fndef MAIN_H
  * *int protoypes (int)
  * */
 void print_numbers(void);
+int _isdigit(int c);
