@@ -1,4 +1,3 @@
-#include "main.h" 
 #include <stdio.h>
 /**
  * main - check the code for Holberton School students.
@@ -29,7 +28,6 @@ else
 {
 printf("%i", i);
 }
-
 if (i != 100)
 {
 putchar(' ');
