@@ -6,19 +6,16 @@
  */
 int main(void)
 {
-unsigned long int num = 612852475143;
-unsigned long int prim;
+long int x = 612852475143;
+	long int py;
 
-prim = 3;
-while (prim < num / 2)
-{
-if ((num % prim) == 0)
-{
-if ((prim % 3) == 2)
-printf(",%lu ", prim);
-}
-prim + = 2;
-}
-_putchar('\n');
-return (0);
+	for (py = 2; py < x; py++)
+	{
+		if (x % py == 0)
+		{
+			x = x / py;
+		}
+	}
+	printf("%ld\n", py);
+	return (0);
 }
