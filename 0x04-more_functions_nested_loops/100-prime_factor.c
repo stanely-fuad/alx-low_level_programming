@@ -7,20 +7,19 @@
  */
 int main(void)
 {
+unsigned long int num = 612852475143;
+unsigned long int prim;
 
-unsigned int long n = 612852475143, a = (int) sqrt(n);
-
-while (1)
+prim = 3;
+while (prim < num / 2)
 {
-
-	if (n % a == 0)
-	{
-		printf("%lu \n", n / a);
-		break;
-	}
-	a--;
-
+if ((num % prim) == 0)
+{
+if ((prim % 3) == 2)
+printf(",%lu ", prim);
 }
-
+prim + = 2;
+}
+_putchar('\n');
 return (0);
 }
