@@ -1,72 +1,44 @@
 #include <stdio.h> 
  #include <stdlib.h> 
- #include <ctype.h> 
-  
+ #include "main.h" 
   
  /** 
-  * _isnumber - checks if string is a number 
-  * @s: string 
-  * 
-  * Return: On success 1. 
-  * If not a number, 0 is returned. 
-  */ 
- int _isnumber(char *s) 
- { 
-         int i, check, d; 
+ * main - prints the minimum number of coins for an amount of money 
+ * @argc: should count two arguments 
+ * @argv: arguments given should be program name and amount of money 
+ * Return: least number of coins, 0 if negative amount, 1 if amount not given 
+ */ 
   
-         i = 0, d = 0, check = 1; 
-         if (*s == '-') 
-                 i++; 
-         for (; *(s + i) != 0; i++) 
-         { 
-                 d = isdigit(*(s + i)); 
-                 if (d == 0) 
-                 { 
-                         check = 0; 
-                         break; 
-                 } 
-         } 
-         return (check); 
+ int main(int argc, char *argv[]) 
+ { 
+ int n, coins = 0; 
+  
+ /* validate input */ 
+ if (argc != 2) 
+ { 
+ printf("Error\n"); 
+ return (1); 
  } 
- /** 
-  * main - Entry point 
-  * 
-  * @argc: Counts the number of parameters that go into main 
-  * @argv: Pointer of array of pointers containing strings entering main 
-  * Return: Always 0 (Success) 
-  */ 
- int main(int argc, char **argv) 
- { 
-         int j, ex, coins, cents, d; 
-         int c[5] = {25, 10, 5, 2, 1}; 
   
-         ex = 1, j = 0, coins = 0; 
-         if (argc == 2) 
-         { 
-                 if (_isnumber(argv[1])) 
-                 { 
-                         ex = 0, cents = atoi(argv[1]); 
-                         if (cents >= 0) 
-                         { 
-                                 while (cents != 0) 
-                                 { 
-                                         d = cents / c[j]; 
-                                         if (d == 0) 
-                                         { 
-                                                 j++; 
-                                         } 
-                                         else 
-                                         { 
-                                                 coins += d; 
-                                                 cents -= (d * c[j]); 
-                                         } 
-                                 } 
-                         } 
-                 } 
-         } 
-         if (ex == 0) 
-                 printf("%i\n", coins); 
-         else 
-                 printf("%s\n", "Error"); 
-         return (ex); 
+ if (argv[1][0] == '-') 
+ { 
+ printf("0\n"); 
+ return (0); 
+ } 
+  
+ /* convert string to int and calculate coins */ 
+ n = atoi(argv[1]); 
+  
+ coins += n / 25; 
+ n = n % 25; 
+ coins += n / 10; 
+ n = n % 10; 
+ coins += n / 5; 
+ n = n % 5; 
+ coins += n / 2; 
+ n = n % 2; 
+ coins += n / 1; 
+  
+ printf("%d\n", coins); 
+ return (0); 
  }
