@@ -1,53 +1,72 @@
 #include <stdio.h> 
  #include <stdlib.h> 
-/** 
-  *main - prints minimum amount of coins to give 
-  * 
-  *@argc:arguement count 
-  *@argv:arguement vector 
-  * 
-  *Return:0(success) 
-  * 
-  */ 
-int main(int argc, char *argv[]) 
-{ 
-          int cents, change; 
+ #include <ctype.h> 
   
-         if (argc != 2) 
-	           { 
-			                printf("Error\n"); 
-		                      return (1); 
-		              } 
-         cents = atoi(argv[1]); 
-         if (cents < 0) 
-	           { 
-			                printf("%d\n", 0); 
-		                      return (0); 
-		              } 
-         if (cents % 25 >= 0) 
-	           { 
-			                change = cents / 25; 
-		                      cents = cents % 25; 
-		              } 
-         if (cents % 10 >= 0) 
-	           { 
-			                change += cents / 10; 
-		                      cents = cents % 10; 
-		              } 
-         if (cents % 5 >= 0) 
-	           { 
-			                change += cents / 5; 
-		                      cents = cents % 5; 
-		              } 
-         if (cents % 2 >= 0) 
-	           { 
-			                change += cents / 2; 
-		                      cents = cents % 2; 
-		              } 
-         if (cents % 1 >= 0) 
-	           { 
-			                change += cents / 1; 
-		              } 
-         printf("%d\n", change); 
-         return (0); 
-}
+  
+ /** 
+  * _isnumber - checks if string is a number 
+  * @s: string 
+  * 
+  * Return: On success 1. 
+  * If not a number, 0 is returned. 
+  */ 
+ int _isnumber(char *s) 
+ { 
+         int i, check, d; 
+  
+         i = 0, d = 0, check = 1; 
+         if (*s == '-') 
+                 i++; 
+         for (; *(s + i) != 0; i++) 
+         { 
+                 d = isdigit(*(s + i)); 
+                 if (d == 0) 
+                 { 
+                         check = 0; 
+                         break; 
+                 } 
+         } 
+         return (check); 
+ } 
+ /** 
+  * main - Entry point 
+  * 
+  * @argc: Counts the number of parameters that go into main 
+  * @argv: Pointer of array of pointers containing strings entering main 
+  * Return: Always 0 (Success) 
+  */ 
+ int main(int argc, char **argv) 
+ { 
+         int j, ex, coins, cents, d; 
+         int c[5] = {25, 10, 5, 2, 1}; 
+  
+         ex = 1, j = 0, coins = 0; 
+         if (argc == 2) 
+         { 
+                 if (_isnumber(argv[1])) 
+                 { 
+                         ex = 0, cents = atoi(argv[1]); 
+                         if (cents >= 0) 
+                         { 
+                                 while (cents != 0) 
+                                 { 
+                                         d = cents / c[j]; 
+                                         if (d == 0) 
+                                         { 
+                                                 j++; 
+                                         } 
+                                         else 
+                                         { 
+                                                 coins += d; 
+                                                 cents -= (d * c[j]); 
+                                         } 
+                                 } 
+                         } 
+                 } 
+         } 
+         if (ex == 0) 
+                 printf("%i\n", coins); 
+         else 
+                 printf("%s\n", "Error"); 
+         return (ex); 
+ }
