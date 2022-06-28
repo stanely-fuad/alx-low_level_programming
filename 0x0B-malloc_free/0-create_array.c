@@ -1,8 +1,8 @@
 #include "main.h" 
-#include <stdio.h> 
-#include <stdlib.h> 
+ #include <stdio.h> 
+ #include <stdlib.h> 
   
- /** 
+/** 
   * create_array - function that creates an array of chars 
   * and initializes it with a specific char 
   * 
@@ -12,32 +12,25 @@
   * Return: address of the memory to print 
   */ 
   
- char *create_array(unsigned int size, char c) 
+char *create_array(unsigned int size, char c) 
 { 
-char *array; 
-unsigned int i; 
+          unsigned int i; 
+          char *pArray; 
   
-i = 0; 
+          if (size == 0) 
+	                    return (NULL); 
   
-if (size == 0) 
-{ 
-return ('\0'); 
-} 
-else 
-{ 
-array = malloc(sizeof(char) * size); 
-if (array == '\0') 
-{ 
-return ('\0'); 
-} 
-else 
-{ 
-while (i < size) 
-{ 
-array[i] = c; 
-i++; 
-} 
-} 
-return (array); 
-} 
+  /* returns a pointer to the allocated memory */ 
+          pArray = malloc(size * sizeof(char)); 
+  
+          if (pArray == NULL) 
+	                    return (NULL); 
+  
+          i = 0; 
+          while (i < size) 
+	            { 
+                      pArray[i] = c; 
+                    i++; 
+            } 
+          return (pArray); 
 }
