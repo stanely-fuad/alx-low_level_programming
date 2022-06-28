@@ -1,5 +1,5 @@
-#ifndef _FUNCTIONS_H 
-#define _FUNCTIONS_H
+#ifndef��_FUNCTIONS_H_
+#define��_FUNCTIONS_H
 
 int _putchar(char c);
 int _islower(int c);
