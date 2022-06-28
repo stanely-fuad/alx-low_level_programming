@@ -14,23 +14,30 @@
   
  char *create_array(unsigned int size, char c) 
 { 
+char *array; 
 unsigned int i; 
-char *pArray; 
-  
-if (size == 0) 
-return (NULL); 
-  
-/* returns a pointer to the allocated memory */ 
-pArray = malloc(size * sizeof(char)); 
-  
-if (pArray == NULL) 
-return (NULL); 
   
 i = 0; 
+  
+if (size == 0) 
+{ 
+return ('\0'); 
+} 
+else 
+{ 
+array = malloc(sizeof(char) * size); 
+if (array == '\0') 
+{ 
+return ('\0'); 
+} 
+else 
+{ 
 while (i < size) 
 { 
-pArray[i] = c; 
+array[i] = c; 
 i++; 
 } 
-return (pArray); 
+} 
+return (array); 
+} 
 }
