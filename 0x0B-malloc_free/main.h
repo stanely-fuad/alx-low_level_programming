@@ -1,5 +1,5 @@
-#ifndef _FUNCTIONS_H 
-#define _FUNCTIONS_H 
+#ifndef _FUNCTIONS_H_
+#define _FUNCTIONS_H_
   
 char *create_array(unsigned int size, char c); 
 char *_strdup(char *str); 
